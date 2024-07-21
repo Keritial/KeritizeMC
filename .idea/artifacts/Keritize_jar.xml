@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Keritize:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Keritize_jar</output-path>
+    <root id="archive" name="Keritize.jar">
+      <element id="module-output" name="Keritize.main" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.0.20-Beta2/3b5a0c1aa186088d3b4a323f22822c8fff6f73c4/kotlin-stdlib-2.0.20-Beta2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/2.0.20-Beta2/fe6ac555a2de55d02ce7b3ce4a00538cf565e9e4/kotlin-stdlib-jdk8-2.0.20-Beta2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/2.0.20-Beta2/7cf508d966728e5d691753d274e262e308c3d4b8/kotlin-stdlib-jdk7-2.0.20-Beta2.jar" path-in-jar="/" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources" />
+    </root>
+  </artifact>
+</component>

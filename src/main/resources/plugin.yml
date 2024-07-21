@@ -1,0 +1,57 @@
+name: Keritize
+version: '1.0-SNAPSHOT'
+main: io.github.keritial.keritize.Keritize
+api-version: '1.20'
+authors: [ Keritial ]
+description: Keritial-specific plugin.
+website: https://krtl.top/
+
+commands:
+  suicide:
+    description: "重开捏"
+    usage: "/<command>"
+    permission: keritial.suicide
+  back:
+    description: "回到上一个有记录的位置"
+    usage: "/<command>"
+    aliases: [b]
+    permission: keritial.back
+  tpa:
+    description: "Treat or trick!"
+    usage: "/<command> [player]"
+    aliases: [t]
+    permission: keritial.tpa
+  tpahere:
+    description: "Trick or treat!"
+    usage: "/<command> [player]"
+    permission: keritial.tpa
+  tpaccept:
+    description: "Treat!"
+    usage: "/<command> [player]"
+    aliases: [a]
+    permission: keritial.tpaccept
+  tpacancel:
+    description: "Wait a minute!"
+    usage: "/<command> [player]"
+    permission: keritial.tpacancel
+  tpadeny:
+    description: "Trick!"
+    usage: "/<command> [player]"
+    permission: keritial.tpadeny
+
+
+permissions:
+  keritial.suicide:
+    default: not op
+  keritial.back:
+    default: op
+  keritial.tpa:
+    default: op
+  keritial.tpahere:
+    default: op
+  keritial.tpaccept:
+    default: op
+  keritial.tpacancel:
+    default: op
+  keritial.tpadeny:
+    default: op
