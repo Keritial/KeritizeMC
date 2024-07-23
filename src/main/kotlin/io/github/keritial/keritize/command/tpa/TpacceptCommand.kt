@@ -6,7 +6,6 @@ import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
-import java.util.logging.Logger
 
 class TpacceptCommand(private val tpaService: TpaService) :
     CommandWrapper(requirePlayer = true) {

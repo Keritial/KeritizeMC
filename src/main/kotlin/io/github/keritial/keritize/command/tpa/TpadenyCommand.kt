@@ -5,7 +5,7 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
-class TpadenyCommand(private val tpaService: TpaService):CommandWrapper(requirePlayer = true) {
+class TpadenyCommand(private val tpaService: TpaService) : CommandWrapper(requirePlayer = true) {
     override fun execute(
         sender: CommandSender,
         command: Command,
@@ -13,11 +13,13 @@ class TpadenyCommand(private val tpaService: TpaService):CommandWrapper(requireP
         strings: Array<out String>
     ): Boolean {
         val player = sender as Player
-        player.sendMessage(if (tpaService.deny(player)) {
-            "请求已拒绝。"
-        } else {
-            "没有请求。"
-        })
+        player.sendMessage(
+            if (tpaService.deny(player)) {
+                "请求已拒绝。"
+            } else {
+                "没有请求。"
+            }
+        )
 
         return true
     }

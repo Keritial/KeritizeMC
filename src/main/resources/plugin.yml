@@ -16,6 +16,11 @@ commands:
     usage: "/<command>"
     aliases: [b]
     permission: keritial.back
+  hat:
+    description: "我主要是想把骨头叼在嘴里（"
+    usage: "/<command>"
+    aliases: [h]
+    permission: keritial.hat
   tpa:
     description: "Treat or trick!"
     usage: "/<command> [player]"
@@ -32,18 +37,28 @@ commands:
     permission: keritial.tpaccept
   tpacancel:
     description: "Wait a minute!"
-    usage: "/<command> [player]"
+    usage: "/<command>"
     permission: keritial.tpacancel
   tpadeny:
     description: "Trick!"
     usage: "/<command> [player]"
     permission: keritial.tpadeny
+  fly:
+    description: "allow to fly"
+    usage: "/<command>"
+    permission: keritial.fly
+  maintenance:
+    description: "Put server under maintenance"
+    usage: "/<command>"
+    permission: keritial.fly
 
 
 permissions:
   keritial.suicide:
     default: not op
   keritial.back:
+    default: op
+  keritial.hat:
     default: op
   keritial.tpa:
     default: op
@@ -54,4 +69,8 @@ permissions:
   keritial.tpacancel:
     default: op
   keritial.tpadeny:
+    default: op
+  keritial.fly:
+    default: op
+  keritial.maintenance:
     default: op

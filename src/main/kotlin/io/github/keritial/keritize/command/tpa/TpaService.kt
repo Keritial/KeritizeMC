@@ -2,13 +2,17 @@ package io.github.keritial.keritize.command.tpa
 
 //import io.papermc.paper.util.Tick
 import org.bukkit.entity.Player
+import org.bukkit.event.EventHandler
+import org.bukkit.event.Listener
+import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.plugin.java.JavaPlugin
+
 //import org.bukkit.scheduler.BukkitTask
 //import java.time.Duration
 
 const val TPA_TIMEOUT = 120
 
-class TpaService(private val plugin: JavaPlugin) {
+class TpaService(private val plugin: JavaPlugin) : Listener {
 
     private val requests = HashSet<TpaRequest>()
     private val tasks = HashMap<TpaRequest, Runnable>()
@@ -30,6 +34,11 @@ class TpaService(private val plugin: JavaPlugin) {
                 "${requester.name} 请求传送到你处，${TPA_TIMEOUT} 秒后过期。"
             }
         )
+    }
+
+    @EventHandler
+    fun onPlayerQuit(event: PlayerQuitEvent) {
+        removePlayer(event.player)
     }
 
     fun byRequester(requester: Player) = this.requests.find { it.requester == requester }
@@ -66,6 +75,11 @@ class TpaService(private val plugin: JavaPlugin) {
         requests.remove(request)
 //        tasks[request]?.
         tasks.remove(request)
+    }
+
+    fun removePlayer(player: Player) {
+        deny(player)
+        cancel(player)
     }
 
     fun cancel(requester: Player): Boolean {
