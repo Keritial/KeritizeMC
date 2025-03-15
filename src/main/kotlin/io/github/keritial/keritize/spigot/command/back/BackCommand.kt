@@ -1,6 +1,6 @@
-package io.github.keritial.keritize.command.back
+package io.github.keritial.keritize.spigot.command.back
 
-import io.github.keritial.keritize.command.CommandWrapper
+import io.github.keritial.keritize.spigot.command.CommandWrapper
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player

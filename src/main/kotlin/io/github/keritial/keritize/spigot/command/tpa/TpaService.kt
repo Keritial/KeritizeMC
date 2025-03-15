@@ -1,4 +1,4 @@
-package io.github.keritial.keritize.command.tpa
+package io.github.keritial.keritize.spigot.command.tpa
 
 //import io.papermc.paper.util.Tick
 import org.bukkit.entity.Player

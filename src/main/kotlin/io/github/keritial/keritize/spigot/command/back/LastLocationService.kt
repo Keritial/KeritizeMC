@@ -1,7 +1,7 @@
-package io.github.keritial.keritize.command.back
+package io.github.keritial.keritize.spigot.command.back
 
-import io.github.keritial.keritize.formatCoordinates
-import io.github.keritial.keritize.isLocationSafe
+import io.github.keritial.keritize.spigot.displayCoordinates
+import io.github.keritial.keritize.spigot.isLocationSafe
 import org.bukkit.Location
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -19,7 +19,7 @@ class LastLocationService(private val logger: Logger) : Listener {
     fun record(player: Player, location: Location) {
         removePlayer(player)
         locations.add(LocationRecord(player, location, Instant.now()))
-        val locationDisplay = formatCoordinates(location)
+        val locationDisplay = displayCoordinates(location)
         logger.info("Player ${player.name} last location recorded: $locationDisplay")
         player.sendMessage(
             if (isLocationSafe(location)) {
@@ -67,7 +67,7 @@ class LastLocationService(private val logger: Logger) : Listener {
 
     @EventHandler
     fun onPlayerDeath(event: PlayerDeathEvent) {
-        val player = event.player
+        val player = event.entity
         recordPlayer(player)
         logger.info("Recorded player ${player.name} location on death.")
     }

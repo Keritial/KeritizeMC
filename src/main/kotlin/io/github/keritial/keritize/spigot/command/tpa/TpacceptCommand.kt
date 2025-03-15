@@ -1,11 +1,12 @@
-package io.github.keritial.keritize.command.tpa
+package io.github.keritial.keritize.spigot.command.tpa
 
-import io.github.keritial.keritize.command.CommandWrapper
-import io.github.keritial.keritize.findSafeLocation
+import io.github.keritial.keritize.spigot.command.CommandWrapper
+import io.github.keritial.keritize.spigot.findSafeLocation
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
+import java.util.ArrayList
 
 class TpacceptCommand(private val tpaService: TpaService) :
     CommandWrapper(requirePlayer = true) {
@@ -32,7 +33,7 @@ class TpacceptCommand(private val tpaService: TpaService) :
 
             1 -> {
                 val request = requests[0]
-                execute(request)
+                process(request)
                 return true
             }
         }
@@ -49,11 +50,11 @@ class TpacceptCommand(private val tpaService: TpaService) :
             return true
         }
         val request = requests.first { it.requester == requester }
-        execute(request)
+        process(request)
         return true
     }
 
-    fun execute(request: TpaRequest) {
+    private fun process(request: TpaRequest) {
         val reversed = request.reversed
         val from = if (reversed) {
             request.acceptor
@@ -74,7 +75,7 @@ class TpacceptCommand(private val tpaService: TpaService) :
                 request.confirmed = true
                 request.acceptor.sendMessage(doublecheckmessage)
             } else {
-                request.acceptor.sendMessage("你的位置不安全。待对方再次批准此次请求，${TPA_TIMEOUT} 秒后过期。")
+                request.acceptor.sendMessage("你的位置不安全。待对方再次批准此次请求，$TPA_TIMEOUT 秒后过期。")
                 request.requester.sendMessage(doublecheckmessage)
                 tpaService.add(request.acceptor, request.requester, true)
                 tpaService.remove(request)
@@ -89,4 +90,15 @@ class TpacceptCommand(private val tpaService: TpaService) :
         tpaService.remove(request)
     }
 
+    override fun onTabComplete(
+        sender: CommandSender,
+        command: Command,
+        label: String,
+        args: Array<out String>
+    ): MutableList<String> {
+        val player = sender as Player
+        return if (args.size==1) {
+            tpaService.byAcceptor(player).map { it.requester.name }.toMutableList()
+        } else ArrayList()
+    }
 }

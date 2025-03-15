@@ -1,0 +1,23 @@
+# Useful features
+prevent-chat-message-upgrades: true
+omit-suicide-message: true
+
+# Life-saving features
+prevent-creeper-griefing: false
+
+# Fun features
+drop-player-skull-if-killed-by-player: false
+register-custom-recipe: false
+
+# Convenient features
+record-player-location: false
+
+# Web API
+http-api: false
+http-port: 23333
+
+# Fishy features
+operator-bypass-player-cap: true
+#listen-proxy-command: false
+krtl-proprietary-beacon: false
+krtl-proprietary-endpoint: "http://127.0.0.1:8787/orangemc"

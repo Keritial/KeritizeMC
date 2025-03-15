@@ -1,6 +1,6 @@
-package io.github.keritial.keritize.command.tpa
+package io.github.keritial.keritize.spigot.command.tpa
 
-import io.github.keritial.keritize.command.CommandWrapper
+import io.github.keritial.keritize.spigot.command.CommandWrapper
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player

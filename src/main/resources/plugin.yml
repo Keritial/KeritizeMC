@@ -1,76 +1,94 @@
 name: Keritize
-version: '1.0-SNAPSHOT'
-main: io.github.keritial.keritize.Keritize
-api-version: '1.20'
-authors: [ Keritial ]
-description: Keritial-specific plugin.
+version: "1.0-SNAPSHOT"
+author: Keritial
+description: Keritial-specific purpose plugin.
 website: https://krtl.top/
 
+api-version: "1.21.4"
+main: io.github.keritial.keritize.spigot.KeritizedSpigot
+softdepend: [ ProtocolLib ]
+
+libraries:
+  - org.jetbrains.kotlin:kotlin-stdlib:2.1.10
+  - io.javalin:javalin:6.4.0
+
+
 commands:
+  keritize:
+    description: "重开"
+    usage: "/<command> [subcommand]"
+    permission: keritize
   suicide:
     description: "重开捏"
     usage: "/<command>"
-    permission: keritial.suicide
+    aliases: [kl]
+    permission: keritize.suicide
   back:
     description: "回到上一个有记录的位置"
     usage: "/<command>"
     aliases: [b]
-    permission: keritial.back
+    permission: keritize.back
   hat:
     description: "我主要是想把骨头叼在嘴里（"
     usage: "/<command>"
     aliases: [h]
-    permission: keritial.hat
+    permission: keritize.hat
   tpa:
     description: "Treat or trick!"
     usage: "/<command> [player]"
     aliases: [t]
-    permission: keritial.tpa
+    permission: keritize.tpa
   tpahere:
     description: "Trick or treat!"
     usage: "/<command> [player]"
-    permission: keritial.tpa
+    permission: keritize.tpa
   tpaccept:
     description: "Treat!"
     usage: "/<command> [player]"
     aliases: [a]
-    permission: keritial.tpaccept
+    permission: keritize.tpaccept
   tpacancel:
     description: "Wait a minute!"
     usage: "/<command>"
-    permission: keritial.tpacancel
+    permission: keritize.tpacancel
   tpadeny:
     description: "Trick!"
     usage: "/<command> [player]"
-    permission: keritial.tpadeny
+    permission: keritize.tpadeny
   fly:
-    description: "allow to fly"
+    description: "Enable to fly."
     usage: "/<command>"
-    permission: keritial.fly
+    permission: keritize.fly
   maintenance:
-    description: "Put server under maintenance"
+    description: "Put server under maintenance, preventing new players from joining in."
     usage: "/<command>"
-    permission: keritial.fly
+    permission: keritize.maintenance
+  migrateofflinepet:
+    description: "Migrate pet owners from corresponding offline UUIDs."
+    usage: "/<command>"
+    permission: keritize.migrateofflinepet
 
 
 permissions:
-  keritial.suicide:
-    default: not op
-  keritial.back:
+  keritize.suicide:
+    default: true
+  keritize.back:
     default: op
-  keritial.hat:
+  keritize.hat:
+    default: true
+  keritize.tpa:
+    default: false
+  keritize.tpahere:
+    default: false
+  keritize.tpaccept:
+    default: false
+  keritize.tpacancel:
+    default: false
+  keritize.tpadeny:
+    default: false
+  keritize.fly:
     default: op
-  keritial.tpa:
+  keritize.maintenance:
     default: op
-  keritial.tpahere:
-    default: op
-  keritial.tpaccept:
-    default: op
-  keritial.tpacancel:
-    default: op
-  keritial.tpadeny:
-    default: op
-  keritial.fly:
-    default: op
-  keritial.maintenance:
-    default: op
+  keritize.migrateofflinepet:
+    default: true

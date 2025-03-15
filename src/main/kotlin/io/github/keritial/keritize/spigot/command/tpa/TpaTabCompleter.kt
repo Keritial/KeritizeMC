@@ -1,4 +1,4 @@
-package io.github.keritial.keritize.command.tpa
+package io.github.keritial.keritize.spigot.command.tpa
 
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
@@ -10,9 +10,9 @@ class TpaTabCompleter : TabCompleter {
         p0: CommandSender,
         p1: Command,
         p2: String,
-        p3: Array<out String>?
+        p3: Array<out String>
     ): MutableList<String> {
-        return if (p3 != null && p3.size == 1) {
+        return if (p3.size == 1) {
             Bukkit.getOnlinePlayers().filter { it != p0 }.map { it.name }.toMutableList()
         } else ArrayList()
     }

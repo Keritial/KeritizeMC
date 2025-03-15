@@ -1,7 +1,35 @@
-package io.github.keritial.keritize
+package io.github.keritial.keritize.spigot
 
+import com.comphenix.protocol.ProtocolLibrary
+import org.bukkit.GameMode
 import org.bukkit.Location
 import org.bukkit.entity.Player
+import java.nio.charset.StandardCharsets
+import java.util.*
+
+fun isPaper() = try {
+    Class.forName("com.destroystokyo.paper.ParticleBuilder")
+    true
+} catch (e: ClassNotFoundException) {
+    false
+}
+
+fun getManager() = try {
+    ProtocolLibrary.getProtocolManager()
+} catch (e: NoClassDefFoundError) {
+    null
+}
+
+fun toGamemodeString(gamemode: GameMode) = when (gamemode) {
+    GameMode.CREATIVE -> "creative"
+    GameMode.SURVIVAL -> "survival"
+    GameMode.ADVENTURE -> "adventure"
+    GameMode.SPECTATOR -> "spectator"
+}
+
+fun generateOfflineUuid(characterName: String): UUID {
+    return UUID.nameUUIDFromBytes(("OfflinePlayer:$characterName").toByteArray(StandardCharsets.UTF_8))
+}
 
 fun isPlayerLocationSafe(player: Player): Boolean {
     return isLocationSafe(player.location)
@@ -31,10 +59,10 @@ fun findSafeLocation(location: Location): Location? {
         return location
     }
 //    val top = location.world.getHighestBlockAt(location.blockX,location.blockZ).location
-    val top = location.toHighestLocation()
-    if (isLocationSafe(top)) {
-        return top
-    }
+//    val top = location.
+//    if (isLocationSafe(top)) {
+//        return top
+//    }
     return null
 }
 
@@ -51,8 +79,10 @@ fun humanReadableToBoolean(input: String) = when (input) {
     else -> null
 }
 
-fun formatCoordinates(location: Location) =
-    "${toFixedXYZ(location.x, location.y, location.z)} (${worldNameToHumanReadable(location.world.name)})"
+fun displayPlayer(player: Player) = "${player.name} (${player.uniqueId})"
+
+fun displayCoordinates(location: Location) =
+    "${toFixedXYZ(location.x, location.y, location.z)} (${location.world?.let { worldNameToHumanReadable(it.name) }})"
 
 fun toFixedXYZ(x: Double, y: Double, z: Double) = "${toFixed(x, 2)} ${toFixed(y, 2)} ${toFixed(z, 2)}"
 
